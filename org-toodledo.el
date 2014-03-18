@@ -1264,7 +1264,6 @@ Return a list of task alists."
                   ;; If archiving completed tasks, save off the parent task
                   ;; so we can come back to it later and archive it
                   (setq completed-tasks (append completed-tasks (list edit-task)))
-                  (org-toodledo-mark-subtree-done)
                   )
                 
                 (cond
