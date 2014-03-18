@@ -1890,7 +1890,7 @@ Ask to pick one, the other, or edit.  Return value is the parsed task."
       
       (insert (concat
                (org-toodledo-task-status-to-org task) " "
-               (format "[#%c] " (org-toodledo-priority-to-org priority))
+               (org-toodledo-priority-to-org priority)
                (org-toodledo-task-title task)
                "\n"))
       
@@ -2199,9 +2199,15 @@ and from the local org file on the next sync"
 ;; Map priority
 ;;
 
-(defun org-toodledo-priority-to-org (priority)
+(defun org-toodledo-priority-to-org-letter (priority)
   "Convert PRIORITY from Toodledo to an org-mode letter"
   (min (- ?D (string-to-number priority)) org-lowest-priority))
+
+(defun org-toodledo-priority-to-org (priority)
+  (let ((letter (org-toodledo-priority-to-org-letter priority)))
+    (if (eq org-default-priority letter)
+	""
+      (format "[#%c] " letter))))
 
 (defun org-toodledo-org-to-priority (priority)
   "Convert PRIORITY from org-mode priority string like '[#A]' to Toodledo priority"
