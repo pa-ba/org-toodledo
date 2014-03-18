@@ -545,7 +545,7 @@ Reload if FORCE is non-nil.")
     )
   )
 
-(eval-when-compile
+
   (org-toodledo-make-lookup-function "context")
   (org-toodledo-make-lookup-function "goal")
 
@@ -581,7 +581,6 @@ Reload if FORCE is non-nil.")
                      (cdr (assoc ,field task))))))   
         org-toodledo-fields)
 
-  )
 
 (defconst org-toodledo-fields-dont-ask
   '( 
